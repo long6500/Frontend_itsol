@@ -1,0 +1,30 @@
+.btn-primary{
+  width: 20%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+
+.btn-success{
+  width: 20%;
+}
+
+
+
+/*table{*/
+/*  margin-top: 40px;*/
+/*  !*width: 10%;*!*/
+/*}*/
+select{
+  margin-right: 10px;
+}
+
+input{
+  width: 40%;
+  margin-top: 10px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+
+

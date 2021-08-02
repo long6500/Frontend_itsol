@@ -1,0 +1,44 @@
+<!--<app-loader></app-loader>-->
+<!--<Angular-Bootstrap-Toasts-Container-->
+<!--  [Placement]="top-right"-->
+<!--  [Classes]="text-success">-->
+<!--</Angular-Bootstrap-Toasts-Container>-->
+
+<div style="text-align:center;">
+  <button type="submit"
+          class="btn btn-primary" routerLink="/register">Register for employee
+  </button>
+  <br>
+  <select (change)="selectSort($event)">
+    <option value="origin">Origin</option>
+    <option value="id">ID Descending</option>
+    <option value="name">Name Descending</option>
+  </select>
+  <button type="submit"
+          (click)="sort()">Sort
+  </button>
+  <br>
+
+  <!--SEARCH-->
+  <input class="form-control" type="text"
+         placeholder="Select field(Id,Address) to search or input ID only to update  " [(ngModel)]="searchInput">
+  <br>
+  <br>
+
+  <select (change)="selectSearch($event)">
+    <option value="id">ID </option>
+    <option value="address">Address </option>
+  </select>
+  <button type="submit" class="btn btn-info"
+          (click)="search()">Search
+  </button>
+  <br>
+  <br>
+
+  <button type="submit" class="btn btn-success"
+          (click)="update()">Update
+  </button>
+<!--  <p><span>You selected: </span><b>{{searchInput}}</b></p>-->
+<!--  <p><b>{{searchType}}</b></p>-->
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,374 @@
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+  <div class="card card0 border-0">
+    <div class="row d-flex">
+
+      <div class="card2 card border-0 px-4 py-5">
+        <h1>Update employee</h1>
+
+        <!-- SIGN UP FORM -->
+
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+          <!--           FIRST NAME-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">First Name</h6>
+            </label>
+            <input class="form-control" type="text" formControlName="firstname"
+                   value="{{user.firstname}}"  placeholder="Enter last name">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.firstname.touched) && signupFormControl.firstname.errors?.required">
+                                First name is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.firstname.touched && signupFormControl.firstname.errors?.minlength">
+                                First name must contain minimun 1 characters
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.firstname.touched && signupFormControl.firstname.errors?.maxlength">
+                                First name cannot contain more than 20 characters
+                            </span>
+          </div>
+          <!--middle NAME-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">Middle Name</h6>
+            </label>
+            <input class="form-control" type="text" formControlName="middlename"
+                   placeholder="Enter middle name" value ="{{user.middlename}}">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.middlename.touched) && signupFormControl.middlename.errors?.required">
+                                Middle name is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.middlename.touched && signupFormControl.middlename.errors?.minlength">
+                                Middle name must contain minimun 1 characters
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.middlename.touched && signupFormControl.middlename.errors?.maxlength">
+                                Middle name cannot contain more than 20 characters
+                            </span>
+          </div>
+          <!--          last NAME-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">Last Name</h6>
+            </label>
+            <input class="form-control" type="text" formControlName="lastname"
+                   placeholder="Enter last name" value="{{user.lastname}}">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.lastname.touched) && signupFormControl.lastname.errors?.required">
+                                Last name is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.lastname.touched && signupFormControl.lastname.errors?.minlength">
+                                Last name must contain minimun 1 characters
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.lastname.touched && signupFormControl.lastname.errors?.maxlength">
+                                Last name cannot contain more than 20 characters
+                            </span>
+          </div>
+
+          <!--            USERNAME-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">User Name</h6>
+            </label>
+            <input class="form-control" type="text" formControlName="userName"
+                   placeholder="Enter user name" value="{{user.userName}}">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.userName.touched) && signupFormControl.userName.errors?.required">
+                                UserName is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.userName.touched && signupFormControl.userName.errors?.minlength">
+                                UserName must contain minimun 4 characters
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.userName.touched && signupFormControl.userName.errors?.maxlength">
+                                UserName cannot contain more than 20 characters
+                            </span>
+          </div>
+
+          <!--          PASSWORD-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">Password</h6>
+            </label>
+            <input class="form-control" type="password" formControlName="password"
+                   placeholder="Enter password" value="{{user.password}}">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.password.touched) && signupFormControl.password.errors?.required">
+                                Password is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.password.touched && signupFormControl.password.errors?.invalidPassword">
+                                Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+                                letter and 1 number
+                            </span>
+          </div>
+          <!--          CONFIRM PASSWORD-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">Confirm Password</h6>
+            </label>
+            <input class="form-control" type="password" formControlName="confirmPassword"
+                   placeholder="re-enter password">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.confirmPassword.touched) && signupFormControl.confirmPassword.errors?.required">
+                                Confirm Password is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.confirmPassword.touched && signupFormControl.confirmPassword.errors?.passwordMismatch">
+                                passwords does not match
+                            </span>
+          </div>
+
+          <!--          ROLE-->
+<!--          <div class="row px-3">-->
+<!--            <label class="mb-1">-->
+<!--              <h6 class="mb-0 text-sm">Role</h6>-->
+<!--            </label>-->
+<!--            <label>-->
+<!--              <select name="role" formControlName="role" (change)="selectRole($event)">-->
+<!--                <option value="member">Member</option>-->
+<!--                <option value="pm">PM</option>-->
+<!--                <option value="manager">Manager</option>-->
+<!--              </select>-->
+<!--            </label>-->
+<!--          </div>-->
+<!--          <p><span>You selected: </span><b>{{selectedRole}}</b></p>-->
+          <!--          DOB-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">DOB</h6>
+            </label>
+            <input class="form-control" type="date" formControlName="dob"  value="2020-11-30">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.dob.touched) && signupFormControl.dob.errors?.required">
+                                Select date!
+                            </span>
+          </div>
+          <!--          <input class="form-control" type="date" formControlName="timejoin">-->
+
+          <!--          GENDER-->
+<!--          <div class="row px-3">-->
+<!--            <label class="mb-1">-->
+<!--              <h6 class="mb-0 text-sm">Gender</h6>-->
+<!--            </label>-->
+<!--            <label>-->
+<!--              <select name="gender" formControlName="gender" (change)="selectGender($event)" value="{{user.gender}}">-->
+<!--                <option value = "1">Male</option>-->
+<!--                <option value = "0">Female</option>-->
+<!--              </select>-->
+<!--            </label>-->
+<!--          </div>-->
+<!--          <p><span>You selected: </span><b>{{selectedGender}}</b></p>-->
+
+          <!--          PHONE-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">Phone</h6>
+            </label>
+            <input class="form-control" type="text" formControlName="phone"
+                   placeholder="Enter phone number" value="{{user.phone}}" required>
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.phone.touched) && signupFormControl.phone.errors?.required">
+                                phone is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.phone.touched && signupFormControl.phone.errors?.invalidPhone">
+                                Must be start with 84 or 0 with 3|5|7|8|9 then 8 digits(Example :0-8-65576520)
+                            </span>
+
+          </div>
+
+          <!--              EMAIL-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">Email</h6>
+            </label>
+            <input class="form-control" type="email" formControlName="email"
+                   placeholder="Enter a valid email address" value="{{user.email}}">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.email.touched) && signupFormControl.email.errors?.required">
+                                Email is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.email.touched && signupFormControl.email.errors?.email">
+                                Enter a valid email address
+                            </span>
+          </div>
+          <!--    TYPE-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">Type</h6>
+            </label>
+            <input class="form-control" type="email" formControlName="type"
+                   placeholder="Enter type" value="{{user.type}}">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.type.touched) && signupFormControl.type.errors?.required">
+                                Type is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.type.touched && signupFormControl.type.errors?.minlength">
+                                Type must contain minimun 2 characters
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.type.touched && signupFormControl.type.errors?.maxlength">
+                                Type cannot contain more than 20 characters
+                            </span>
+          </div>
+
+
+          <!--          personalID-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">PersonalID</h6>
+            </label>
+            <input class="form-control" type="text" formControlName="personalID"
+                   placeholder="Enter personalID" value="{{user.personalid}}">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.personalID.touched) && signupFormControl.personalID.errors?.required">
+                                personalID is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.personalID.touched && signupFormControl.personalID.errors?.invalidDigit">
+                                Must have 8 digits
+                            </span>
+
+          </div>
+
+          <!--          ADDRESS-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">Address</h6>
+            </label>
+            <input class="form-control" type="text" formControlName="address"
+                   placeholder="Enter address" value="{{user.address}}">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.address.touched) && signupFormControl.address.errors?.required">
+                                Address is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.address.touched && signupFormControl.address.errors?.minlength">
+                                First name must contain minimun 2 characters
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.address.touched && signupFormControl.address.errors?.maxlength">
+                                Address cannot contain more than 100 characters
+                            </span>
+          </div>
+
+
+          <!--          EDUCATION-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">Education</h6>
+            </label>
+            <input class="form-control" type="text" formControlName="education"
+                   placeholder="Enter education" value="{{user.education}}">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.education.touched) && signupFormControl.education.errors?.required">
+                                Education is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.education.touched && signupFormControl.education.errors?.minlength">
+                                Education must contain minimun 2 characters
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.education.touched && signupFormControl.education.errors?.maxlength">
+                                Education cannot contain more than 20 characters
+                            </span>
+          </div>
+
+          <!--          SCHOOL-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">School</h6>
+            </label>
+            <input class="form-control" type="text" formControlName="school"
+                   placeholder="Enter school" value="{{user.school}}">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.school.touched) && signupFormControl.school.errors?.required">
+                                School is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.school.touched && signupFormControl.school.errors?.minlength">
+                                School must contain minimun 2 characters
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.school.touched && signupFormControl.school.errors?.maxlength">
+                                School cannot contain more than 20 characters
+                            </span>
+          </div>
+
+          <!--          FACULTY-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">Facultys</h6>
+            </label>
+            <input class="form-control" type="text" formControlName="faculty"
+                   placeholder="Enter faculty" value="{{user.faculty}}">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.faculty.touched) && signupFormControl.faculty.errors?.required">
+                                Faculty is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.faculty.touched && signupFormControl.faculty.errors?.minlength">
+                                Faculty must contain minimun 2 characters
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.faculty.touched && signupFormControl.faculty.errors?.maxlength">
+                                Faculty cannot contain more than 20 characters
+                            </span>
+          </div>
+
+          <!--          COURSE-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">Course</h6>
+            </label>
+            <input class="form-control" type="text" formControlName="course"
+                   placeholder="Enter course" value="{{user.course}}">
+            <span class="text-danger"
+                  *ngIf="(signupFormControl.course.touched) && signupFormControl.course.errors?.required">
+                                Course is required
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.course.touched && signupFormControl.course.errors?.minlength">
+                                Course must contain minimun 2 characters
+                            </span>
+            <span class="text-danger"
+                  *ngIf="signupFormControl.course.touched && signupFormControl.course.errors?.maxlength">
+                                            Course cannot contain more than 20 characters
+                                        </span>
+          </div>
+
+
+          <div class="row mb-3 px-3">
+            <button type="submit"
+                    [disabled]="!signupForm.valid"
+                    class="btn btn-primary">Update
+            </button>
+<!--            <button type="button"-->
+<!--                    class="btn btn-success" routerLink="/list">Back to list-->
+<!--            </button>-->
+          </div>
+
+          <span class="text-danger errorMsg" *ngIf="errorMessage">
+                        {{ errorMessage }}
+                    </span>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-popup-modal
+  [modalObject]="modalObject"
+  [display]="display"
+  (displayChange)="displayChange($event)">
+</app-popup-modal>
+
+
+

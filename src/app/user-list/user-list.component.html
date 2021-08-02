@@ -1,0 +1,91 @@
+<!--<div class="card my-5">-->
+<!--<div style="text-align:center;">-->
+<!--  <button type="submit"-->
+<!--          class="btn btn-primary" routerLink="/register">Register for employee-->
+<!--  </button>-->
+<!--  <br>-->
+<!--  <select (change)="selectSort($event)">-->
+<!--    <option value="origin">Origin</option>-->
+<!--    <option value="id">ID</option>-->
+<!--    <option value="name">Name</option>-->
+<!--  </select>-->
+<!--  <button type="submit"-->
+<!--          (click)="sort()">Sort-->
+<!--  </button>-->
+
+<!--&lt;!&ndash;  <input class="form-control" type="text" formControlName="course"&ndash;&gt;-->
+<!--&lt;!&ndash;         placeholder="Enter course">&ndash;&gt;-->
+<!--  <br>-->
+<!--  <input class="form-control" type="text"-->
+<!--         placeholder="Enter Id or Address" [(ngModel)]="addre">-->
+<!--  <select name="sortList" formControlName="sortList" (change)="selectSearch($event)">-->
+<!--    <option value="id">ID</option>-->
+<!--    <option value="address">Address</option>-->
+<!--  </select>-->
+<!--  <button type="submit"-->
+<!--          (click)="search()">Search-->
+<!--  </button>-->
+<!--</div>-->
+
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">FirstName</th>
+    <th scope="col">MiddleName</th>
+    <th scope="col">LastName</th>
+    <th scope="col">UserName</th>
+    <th scope="col">Password</th>
+    <th scope="col">Role</th>
+    <th scope="col">DOB</th>
+    <th scope="col">Gender</th>
+    <th scope="col">Phone</th>
+    <th scope="col">Email</th>
+    <th scope="col">Type</th>
+    <th scope="col">PersonalID</th>
+    <th scope="col">Address</th>
+    <th scope="col">Education</th>
+    <th scope="col">School</th>
+    <th scope="col">Faculty</th>
+    <th scope="col">Course</th>
+    <th scope="col">TimeJoin</th>
+    <th scope="col">Status</th>
+<!--    <th scope="col"></th>-->
+
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td>{{ user.id }}</td>
+    <td>{{ user.firstname }}</td>
+    <td>{{ user.middlename }}</td>
+    <td>{{ user.lastname }}</td>
+    <td>{{ user.userName }}</td>
+    <td>{{ user.password }}</td>
+    <td>{{ user.role }}</td>
+    <td>{{ user.dob}}</td>
+    <td>{{user.gender ? 'Male' : 'Female'}}</td>
+    <td>{{ user.phone}}</td>
+    <td>{{ user.email}}</td>
+    <td>{{ user.type}}</td>
+    <td>{{ user.personalid}}</td>
+    <td>{{ user.address}}</td>
+    <td>{{ user.education}}</td>
+    <td>{{ user.school}}</td>
+    <td>{{ user.faculty}}</td>
+    <td>{{ user.course}}</td>
+    <td>{{ user.timejoin}}</td>
+    <td>{{ user.status ? 'Activated' : 'Deactivated'}}</td>
+<!--    <td> <button type="submit"-->
+<!--                 (click)="updateForm.upd(user.id)"-->
+
+<!--      >Update-->
+<!--&lt;!&ndash;      routerLink="/updateForm"&ndash;&gt;-->
+<!--&lt;!&ndash;      (click)="updateForm.upd(user.id)"&ndash;&gt;-->
+<!--    </button></td>-->
+
+  </tr>
+  </tbody>
+</table>
+<!--</div>-->
