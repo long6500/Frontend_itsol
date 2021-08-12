@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators, FormGroup} from '@angular/forms';
 import {OauthLoginService} from '../services/oauth-login.service';
 import {CustomValidationService} from '../services/validation/custom-validation.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -37,9 +38,9 @@ export class RegisterComponent implements OnInit {
         userName: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(4)]],
         password: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
         confirmPassword: ['', [Validators.required]],
-        // role: ['', [Validators.required]],
+        role: ['', [Validators.required]],
         dob: ['', [Validators.required]],
-        // gender: ['', [Validators.required]],
+        gender: ['', [Validators.required]],
         phone: ['', Validators.compose([Validators.required, this.customValidator.patternPhone()])],
         email: ['', [Validators.required, Validators.email]],
         type: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(2)]],
