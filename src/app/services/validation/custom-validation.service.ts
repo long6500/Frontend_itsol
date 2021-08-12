@@ -49,7 +49,7 @@ export class CustomValidationService {
       if (!control.value) {
         return null;
       }
-      const regex = new RegExp('^[0-9]{8}$');
+      const regex = new RegExp('^[0-9]{12}$');
       const valid = regex.test(control.value);
       return valid ? null : {invalidDigit: true};
     };

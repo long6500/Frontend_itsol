@@ -1,31 +1,3 @@
-<!--<div class="card my-5">-->
-<!--<div style="text-align:center;">-->
-<!--  <button type="submit"-->
-<!--          class="btn btn-primary" routerLink="/register">Register for employee-->
-<!--  </button>-->
-<!--  <br>-->
-<!--  <select (change)="selectSort($event)">-->
-<!--    <option value="origin">Origin</option>-->
-<!--    <option value="id">ID</option>-->
-<!--    <option value="name">Name</option>-->
-<!--  </select>-->
-<!--  <button type="submit"-->
-<!--          (click)="sort()">Sort-->
-<!--  </button>-->
-
-<!--&lt;!&ndash;  <input class="form-control" type="text" formControlName="course"&ndash;&gt;-->
-<!--&lt;!&ndash;         placeholder="Enter course">&ndash;&gt;-->
-<!--  <br>-->
-<!--  <input class="form-control" type="text"-->
-<!--         placeholder="Enter Id or Address" [(ngModel)]="addre">-->
-<!--  <select name="sortList" formControlName="sortList" (change)="selectSearch($event)">-->
-<!--    <option value="id">ID</option>-->
-<!--    <option value="address">Address</option>-->
-<!--  </select>-->
-<!--  <button type="submit"-->
-<!--          (click)="search()">Search-->
-<!--  </button>-->
-<!--</div>-->
 
 <table class="table table-bordered table-striped">
   <thead class="thead-dark">
@@ -48,7 +20,7 @@
     <th scope="col">School</th>
     <th scope="col">Faculty</th>
     <th scope="col">Course</th>
-    <th scope="col">TimeJoin</th>
+    <th scope="col">TimeJoin   </th>
     <th scope="col">Status</th>
 <!--    <th scope="col"></th>-->
 
@@ -64,7 +36,7 @@
     <td>{{ user.userName }}</td>
     <td>{{ user.password }}</td>
     <td>{{ user.role }}</td>
-    <td>{{ user.dob}}</td>
+    <td>{{ user.dob | date:'yyyy-MM-dd'}}</td>
     <td>{{user.gender ? 'Male' : 'Female'}}</td>
     <td>{{ user.phone}}</td>
     <td>{{ user.email}}</td>
@@ -75,7 +47,7 @@
     <td>{{ user.school}}</td>
     <td>{{ user.faculty}}</td>
     <td>{{ user.course}}</td>
-    <td>{{ user.timejoin}}</td>
+    <td>{{ user.timejoin | date:'yyyy-MM-dd'}}</td>
     <td>{{ user.status ? 'Activated' : 'Deactivated'}}</td>
 <!--    <td> <button type="submit"-->
 <!--                 (click)="updateForm.upd(user.id)"-->
