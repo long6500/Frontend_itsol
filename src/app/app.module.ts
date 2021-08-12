@@ -67,7 +67,7 @@ import {DatePipe} from '@angular/common';
         preventDuplicates: true
       }
     ),
-    FormsModule
+    FormsModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpIntercpterService, multi: true},

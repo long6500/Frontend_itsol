@@ -27,6 +27,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.newDate = new Date();
 
+    //make drop-down list select null
+
     // sign up form builder
     this.signupForm = this.fb.group({
         firstname: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(1)]],
