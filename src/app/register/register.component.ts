@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators, FormGroup} from '@angular/forms';
 import {OauthLoginService} from '../services/oauth-login.service';
 import {CustomValidationService} from '../services/validation/custom-validation.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -20,6 +21,7 @@ export class RegisterComponent implements OnInit {
   newDate: Date;
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private oauthService: OauthLoginService,
     private customValidator: CustomValidationService) {
@@ -27,6 +29,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.newDate = new Date();
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
 
     //make drop-down list select null
 

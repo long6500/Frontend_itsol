@@ -14,7 +14,7 @@
               <h6 class="mb-0 text-sm">First Name</h6>
             </label>
             <input class="form-control" type="text" formControlName="firstname"
-                   value="{{user.firstname}}"  placeholder="Enter last name">
+                   value="{{user.firstname}}">
             <span class="text-danger"
                   *ngIf="(signupFormControl.firstname.touched) && signupFormControl.firstname.errors?.required">
                                 First name is required
@@ -91,59 +91,63 @@
           </div>
 
           <!--          PASSWORD-->
-          <div class="row px-3">
-            <label class="mb-1">
-              <h6 class="mb-0 text-sm">Password</h6>
-            </label>
-            <input class="form-control" type="password" formControlName="password"
-                   placeholder="Enter password" value="{{user.password}}">
-            <span class="text-danger"
-                  *ngIf="(signupFormControl.password.touched) && signupFormControl.password.errors?.required">
-                                Password is required
-                            </span>
-            <span class="text-danger"
-                  *ngIf="signupFormControl.password.touched && signupFormControl.password.errors?.invalidPassword">
-                                Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
-                                letter and 1 number
-                            </span>
-          </div>
-          <!--          CONFIRM PASSWORD-->
-          <div class="row px-3">
-            <label class="mb-1">
-              <h6 class="mb-0 text-sm">Confirm Password</h6>
-            </label>
-            <input class="form-control" type="password" formControlName="confirmPassword"
-                   placeholder="re-enter password">
-            <span class="text-danger"
-                  *ngIf="(signupFormControl.confirmPassword.touched) && signupFormControl.confirmPassword.errors?.required">
-                                Confirm Password is required
-                            </span>
-            <span class="text-danger"
-                  *ngIf="signupFormControl.confirmPassword.touched && signupFormControl.confirmPassword.errors?.passwordMismatch">
-                                passwords does not match
-                            </span>
-          </div>
-
-          <!--          ROLE-->
 <!--          <div class="row px-3">-->
 <!--            <label class="mb-1">-->
-<!--              <h6 class="mb-0 text-sm">Role</h6>-->
+<!--              <h6 class="mb-0 text-sm">Password</h6>-->
 <!--            </label>-->
-<!--            <label>-->
-<!--              <select name="role" formControlName="role" (change)="selectRole($event)">-->
-<!--                <option value="member">Member</option>-->
-<!--                <option value="pm">PM</option>-->
-<!--                <option value="manager">Manager</option>-->
-<!--              </select>-->
-<!--            </label>-->
+<!--            <input class="form-control" type="password" formControlName="password"-->
+<!--                   placeholder="Enter password" value="{{user.password}}">-->
+<!--            <span class="text-danger"-->
+<!--                  *ngIf="(signupFormControl.password.touched) && signupFormControl.password.errors?.required">-->
+<!--                                Password is required-->
+<!--                            </span>-->
+<!--            <span class="text-danger"-->
+<!--                  *ngIf="signupFormControl.password.touched && signupFormControl.password.errors?.invalidPassword">-->
+<!--                                Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase-->
+<!--                                letter and 1 number-->
+<!--                            </span>-->
 <!--          </div>-->
+          <!--          CONFIRM PASSWORD-->
+<!--          <div class="row px-3">-->
+<!--            <label class="mb-1">-->
+<!--              <h6 class="mb-0 text-sm">Confirm Password</h6>-->
+<!--            </label>-->
+<!--            <input class="form-control" type="password" formControlName="confirmPassword"-->
+<!--                   placeholder="re-enter password">-->
+<!--            <span class="text-danger"-->
+<!--                  *ngIf="(signupFormControl.confirmPassword.touched) && signupFormControl.confirmPassword.errors?.required">-->
+<!--                                Confirm Password is required-->
+<!--                            </span>-->
+<!--            <span class="text-danger"-->
+<!--                  *ngIf="signupFormControl.confirmPassword.touched && signupFormControl.confirmPassword.errors?.passwordMismatch">-->
+<!--                                passwords does not match-->
+<!--                            </span>-->
+<!--          </div>-->
+
+          <!--          ROLE-->
+          <div class="row px-3">
+            <label class="mb-1">
+              <h6 class="mb-0 text-sm">Role</h6>
+            </label>
+            <label>
+              <select name="role" formControlName="role" (change)="selectRole($event)">
+<!--                <option value="">{{user.role}}</option>-->
+<!--                <option [ngValue]="null" selected disabled>Don't show</option>-->
+<!--                <option [ngValue]="null" selected hidden>Don't show</option>-->
+                <!--                <option value= '' >Select your Type</option>-->
+                <option value="member">Member</option>
+                <option value="pm">PM</option>
+                <option value="manager">Manager</option>
+              </select>
+            </label>
+          </div>
 <!--          <p><span>You selected: </span><b>{{selectedRole}}</b></p>-->
           <!--          DOB-->
           <div class="row px-3">
             <label class="mb-1">
               <h6 class="mb-0 text-sm">DOB</h6>
             </label>
-            <input class="form-control" type="date" formControlName="dob"  value="2020-11-30">
+            <input class="form-control" type="date" formControlName="dob" [ngModel] ="user.dob | date:'yyyy-MM-dd'">
             <span class="text-danger"
                   *ngIf="(signupFormControl.dob.touched) && signupFormControl.dob.errors?.required">
                                 Select date!

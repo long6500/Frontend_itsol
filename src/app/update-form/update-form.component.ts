@@ -46,9 +46,9 @@ export class UpdateFormComponent implements OnInit {
 
     this.newDate = new Date();
 
-    // sign up form builder
+    // update form builder
     this.signupForm = this.fb.group({
-        firstname: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(1)]],
+        firstname: [null, [Validators.required, Validators.maxLength(20), Validators.minLength(1)]],
         middlename: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(1)]],
         lastname: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(1)]],
         userName: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(4)]],
@@ -138,9 +138,20 @@ export class UpdateFormComponent implements OnInit {
     }
   }
 
+  parseDate(dateString: string): Date {
+    if (dateString) {
+      return new Date(dateString);
+    }
+    return null;
+  }
+
   selectRole(event: any) {
     // update the ui
     this.selectedRole = event.target.value;
+  }
+
+  displayRole(){
+
   }
 
 
