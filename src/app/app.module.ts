@@ -30,6 +30,10 @@ import {SearchByAddressComponent} from './search-by-address/search-by-address.co
 import {SearchByIdComponent} from './search-by-id/search-by-id.component';
 import {UpdateFormComponent} from './update-form/update-form.component';
 import {DatePipe} from '@angular/common';
+import { ControlEmployeeComponent } from './control-employee/control-employee.component';
+import {Ng2OrderModule} from "ng2-order-pipe";
+import {NgxPaginationModule} from "ngx-pagination";
+import { JwPaginationComponent } from 'jw-angular-pagination';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,8 @@ import {DatePipe} from '@angular/common';
     SearchByAddressComponent,
     SearchByIdComponent,
     UpdateFormComponent,
+    ControlEmployeeComponent,
+    JwPaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +74,8 @@ import {DatePipe} from '@angular/common';
       }
     ),
     FormsModule,
+    Ng2OrderModule,
+    NgxPaginationModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpIntercpterService, multi: true},

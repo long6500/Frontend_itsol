@@ -1,12 +1,22 @@
-
+<div style="text-align:center;">
+  <input class="form-control" type="text" placeholder="Input to search"
+         id="search"
+         [(ngModel)]="searchInput" (ngModelChange)="Search()">
+  <select (change)="selectSearch($event)" id = "searchType">
+    <option value="id">ID</option>
+    <option value="firstname">First Name</option>
+  </select>
+<!--  <p><span>You search: </span><b>{{searchType}}</b></p>-->
+</div>
 <table class="table table-bordered table-striped">
   <thead class="thead-dark">
   <tr>
-    <th scope="col">ID</th>
-    <th scope="col">FirstName</th>
+    <th scope="col">Action</th>
+    <th scope="col" (click)="sort('id')">ID<i class="fa fa-sort"></i></th>
+    <th scope="col" (click)="sort('firstname')">FirstName<i class="fa fa-sort"></i></th>
     <th scope="col">MiddleName</th>
     <th scope="col">LastName</th>
-    <th scope="col">UserName</th>
+    <th scope="col" (click)="sort('userName')">UserName<i class="fa fa-sort"></i></th>
     <th scope="col">Password</th>
     <th scope="col">Role</th>
     <th scope="col">DOB</th>
@@ -20,15 +30,17 @@
     <th scope="col">School</th>
     <th scope="col">Faculty</th>
     <th scope="col">Course</th>
-    <th scope="col">TimeJoin   </th>
+    <th scope="col">TimeJoin</th>
     <th scope="col">Status</th>
-<!--    <th scope="col"></th>-->
 
 
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let user of users">
+  <tr *ngFor="let user of users | orderBy: key:reverse | paginate:{itemsPerPage:5,currentPage:p}">
+    <td>
+      <button type="button" class="btn btn-primary" (click)="update(user.id)">Update</button>
+    </td>
     <td>{{ user.id }}</td>
     <td>{{ user.firstname }}</td>
     <td>{{ user.middlename }}</td>
@@ -49,15 +61,11 @@
     <td>{{ user.course}}</td>
     <td>{{ user.timejoin | date:'dd/MM/yyyy'}}</td>
     <td>{{ user.status ? 'Activated' : 'Deactivated'}}</td>
-<!--    <td> <button type="submit"-->
-<!--                 (click)="updateForm.upd(user.id)"-->
-
-<!--      >Update-->
-<!--&lt;!&ndash;      routerLink="/updateForm"&ndash;&gt;-->
-<!--&lt;!&ndash;      (click)="updateForm.upd(user.id)"&ndash;&gt;-->
-<!--    </button></td>-->
 
   </tr>
   </tbody>
+
 </table>
-<!--</div>-->
+<!--<nav class="navbar">-->
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<!--</nav>-->

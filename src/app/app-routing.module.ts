@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'sortByID', component: SortByIDComponent},
   {path: 'searchByAddress', component: SearchByAddressComponent},
   {path: 'searchById', component: SearchByIdComponent},
-  {path: 'updateForm', component: UpdateFormComponent},
+  {path: 'updateForm/:id', component: UpdateFormComponent},
 
   {
     path: 'home',

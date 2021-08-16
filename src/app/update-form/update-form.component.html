@@ -14,7 +14,7 @@
               <h6 class="mb-0 text-sm">First Name</h6>
             </label>
             <input class="form-control" type="text" formControlName="firstname"
-                   value="{{user.firstname}}">
+                   [ngModel]="user.firstname">
             <span class="text-danger"
                   *ngIf="(signupFormControl.firstname.touched) && signupFormControl.firstname.errors?.required">
                                 First name is required
@@ -34,7 +34,7 @@
               <h6 class="mb-0 text-sm">Middle Name</h6>
             </label>
             <input class="form-control" type="text" formControlName="middlename"
-                   placeholder="Enter middle name" value ="{{user.middlename}}">
+                   placeholder="Enter middle name" [ngModel]="user.middlename">
             <span class="text-danger"
                   *ngIf="(signupFormControl.middlename.touched) && signupFormControl.middlename.errors?.required">
                                 Middle name is required
@@ -54,7 +54,7 @@
               <h6 class="mb-0 text-sm">Last Name</h6>
             </label>
             <input class="form-control" type="text" formControlName="lastname"
-                   placeholder="Enter last name" value="{{user.lastname}}">
+                   placeholder="Enter last name" [ngModel]="user.lastname">
             <span class="text-danger"
                   *ngIf="(signupFormControl.lastname.touched) && signupFormControl.lastname.errors?.required">
                                 Last name is required
@@ -75,7 +75,7 @@
               <h6 class="mb-0 text-sm">User Name</h6>
             </label>
             <input class="form-control" type="text" formControlName="userName"
-                   placeholder="Enter user name" value="{{user.userName}}">
+                   placeholder="Enter user name" [ngModel]="user.userName">
             <span class="text-danger"
                   *ngIf="(signupFormControl.userName.touched) && signupFormControl.userName.errors?.required">
                                 UserName is required
@@ -91,63 +91,63 @@
           </div>
 
           <!--          PASSWORD-->
-<!--          <div class="row px-3">-->
-<!--            <label class="mb-1">-->
-<!--              <h6 class="mb-0 text-sm">Password</h6>-->
-<!--            </label>-->
-<!--            <input class="form-control" type="password" formControlName="password"-->
-<!--                   placeholder="Enter password" value="{{user.password}}">-->
-<!--            <span class="text-danger"-->
-<!--                  *ngIf="(signupFormControl.password.touched) && signupFormControl.password.errors?.required">-->
-<!--                                Password is required-->
-<!--                            </span>-->
-<!--            <span class="text-danger"-->
-<!--                  *ngIf="signupFormControl.password.touched && signupFormControl.password.errors?.invalidPassword">-->
-<!--                                Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase-->
-<!--                                letter and 1 number-->
-<!--                            </span>-->
-<!--          </div>-->
+          <!--          <div class="row px-3">-->
+          <!--            <label class="mb-1">-->
+          <!--              <h6 class="mb-0 text-sm">Password</h6>-->
+          <!--            </label>-->
+          <!--            <input class="form-control" type="password" formControlName="password"-->
+          <!--                   placeholder="Enter password" value="{{user.password}}">-->
+          <!--            <span class="text-danger"-->
+          <!--                  *ngIf="(signupFormControl.password.touched) && signupFormControl.password.errors?.required">-->
+          <!--                                Password is required-->
+          <!--                            </span>-->
+          <!--            <span class="text-danger"-->
+          <!--                  *ngIf="signupFormControl.password.touched && signupFormControl.password.errors?.invalidPassword">-->
+          <!--                                Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase-->
+          <!--                                letter and 1 number-->
+          <!--                            </span>-->
+          <!--          </div>-->
           <!--          CONFIRM PASSWORD-->
-<!--          <div class="row px-3">-->
-<!--            <label class="mb-1">-->
-<!--              <h6 class="mb-0 text-sm">Confirm Password</h6>-->
-<!--            </label>-->
-<!--            <input class="form-control" type="password" formControlName="confirmPassword"-->
-<!--                   placeholder="re-enter password">-->
-<!--            <span class="text-danger"-->
-<!--                  *ngIf="(signupFormControl.confirmPassword.touched) && signupFormControl.confirmPassword.errors?.required">-->
-<!--                                Confirm Password is required-->
-<!--                            </span>-->
-<!--            <span class="text-danger"-->
-<!--                  *ngIf="signupFormControl.confirmPassword.touched && signupFormControl.confirmPassword.errors?.passwordMismatch">-->
-<!--                                passwords does not match-->
-<!--                            </span>-->
-<!--          </div>-->
+          <!--          <div class="row px-3">-->
+          <!--            <label class="mb-1">-->
+          <!--              <h6 class="mb-0 text-sm">Confirm Password</h6>-->
+          <!--            </label>-->
+          <!--            <input class="form-control" type="password" formControlName="confirmPassword"-->
+          <!--                   placeholder="re-enter password">-->
+          <!--            <span class="text-danger"-->
+          <!--                  *ngIf="(signupFormControl.confirmPassword.touched) && signupFormControl.confirmPassword.errors?.required">-->
+          <!--                                Confirm Password is required-->
+          <!--                            </span>-->
+          <!--            <span class="text-danger"-->
+          <!--                  *ngIf="signupFormControl.confirmPassword.touched && signupFormControl.confirmPassword.errors?.passwordMismatch">-->
+          <!--                                passwords does not match-->
+          <!--                            </span>-->
+          <!--          </div>-->
 
           <!--          ROLE-->
-          <div class="row px-3">
-            <label class="mb-1">
-              <h6 class="mb-0 text-sm">Role</h6>
-            </label>
-            <label>
-              <select name="role" formControlName="role" (change)="selectRole($event)">
-<!--                <option value="">{{user.role}}</option>-->
-<!--                <option [ngValue]="null" selected disabled>Don't show</option>-->
-<!--                <option [ngValue]="null" selected hidden>Don't show</option>-->
-                <!--                <option value= '' >Select your Type</option>-->
-                <option value="member">Member</option>
-                <option value="pm">PM</option>
-                <option value="manager">Manager</option>
-              </select>
-            </label>
-          </div>
-<!--          <p><span>You selected: </span><b>{{selectedRole}}</b></p>-->
+          <!--          <div class="row px-3">-->
+          <!--            <label class="mb-1">-->
+          <!--              <h6 class="mb-0 text-sm">Role</h6>-->
+          <!--            </label>-->
+          <!--            <label>-->
+          <!--              <select name="role" formControlName="role" (change)="selectRole($event)">-->
+          <!--                &lt;!&ndash;                <option value="">{{user.role}}</option>&ndash;&gt;-->
+          <!--                &lt;!&ndash;                <option [ngValue]="null" selected disabled>Don't show</option>&ndash;&gt;-->
+          <!--                &lt;!&ndash;                <option [ngValue]="null" selected hidden>Don't show</option>&ndash;&gt;-->
+          <!--                &lt;!&ndash;                <option value= '' >Select your Type</option>&ndash;&gt;-->
+          <!--                <option value="member">Member</option>-->
+          <!--                <option value="pm">PM</option>-->
+          <!--                <option value="manager">Manager</option>-->
+          <!--              </select>-->
+          <!--            </label>-->
+          <!--          </div>-->
+
           <!--          DOB-->
           <div class="row px-3">
             <label class="mb-1">
               <h6 class="mb-0 text-sm">DOB</h6>
             </label>
-            <input class="form-control" type="date" formControlName="dob" [ngModel] ="user.dob | date:'yyyy-MM-dd'">
+            <input class="form-control" type="date" formControlName="dob" [ngModel]="user.dob | date:'yyyy-MM-dd'">
             <span class="text-danger"
                   *ngIf="(signupFormControl.dob.touched) && signupFormControl.dob.errors?.required">
                                 Select date!
@@ -156,18 +156,18 @@
           <!--          <input class="form-control" type="date" formControlName="timejoin">-->
 
           <!--          GENDER-->
-<!--          <div class="row px-3">-->
-<!--            <label class="mb-1">-->
-<!--              <h6 class="mb-0 text-sm">Gender</h6>-->
-<!--            </label>-->
-<!--            <label>-->
-<!--              <select name="gender" formControlName="gender" (change)="selectGender($event)" value="{{user.gender}}">-->
-<!--                <option value = "1">Male</option>-->
-<!--                <option value = "0">Female</option>-->
-<!--              </select>-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <p><span>You selected: </span><b>{{selectedGender}}</b></p>-->
+          <!--          <div class="row px-3">-->
+          <!--            <label class="mb-1">-->
+          <!--              <h6 class="mb-0 text-sm">Gender</h6>-->
+          <!--            </label>-->
+          <!--            <label>-->
+          <!--              <select name="gender" formControlName="gender" (change)="selectGender($event)" value="{{user.gender}}">-->
+          <!--                <option value = "1">Male</option>-->
+          <!--                <option value = "0">Female</option>-->
+          <!--              </select>-->
+          <!--            </label>-->
+          <!--          </div>-->
+          <!--          <p><span>You selected: </span><b>{{selectedGender}}</b></p>-->
 
           <!--          PHONE-->
           <div class="row px-3">
@@ -175,7 +175,7 @@
               <h6 class="mb-0 text-sm">Phone</h6>
             </label>
             <input class="form-control" type="text" formControlName="phone"
-                   placeholder="Enter phone number" value="{{user.phone}}" required>
+                   placeholder="Enter phone number" [ngModel]="user.phone" required>
             <span class="text-danger"
                   *ngIf="(signupFormControl.phone.touched) && signupFormControl.phone.errors?.required">
                                 phone is required
@@ -193,7 +193,7 @@
               <h6 class="mb-0 text-sm">Email</h6>
             </label>
             <input class="form-control" type="email" formControlName="email"
-                   placeholder="Enter a valid email address" value="{{user.email}}">
+                   placeholder="Enter a valid email address" [ngModel]="user.phone">
             <span class="text-danger"
                   *ngIf="(signupFormControl.email.touched) && signupFormControl.email.errors?.required">
                                 Email is required
@@ -209,7 +209,7 @@
               <h6 class="mb-0 text-sm">Type</h6>
             </label>
             <input class="form-control" type="email" formControlName="type"
-                   placeholder="Enter type" value="{{user.type}}">
+                   placeholder="Enter type" [ngModel]="user.type">
             <span class="text-danger"
                   *ngIf="(signupFormControl.type.touched) && signupFormControl.type.errors?.required">
                                 Type is required
@@ -231,7 +231,7 @@
               <h6 class="mb-0 text-sm">PersonalID</h6>
             </label>
             <input class="form-control" type="text" formControlName="personalID"
-                   placeholder="Enter personalID" value="{{user.personalid}}">
+                   placeholder="Enter personalID" [ngModel]="user.personalid">
             <span class="text-danger"
                   *ngIf="(signupFormControl.personalID.touched) && signupFormControl.personalID.errors?.required">
                                 personalID is required
@@ -249,7 +249,7 @@
               <h6 class="mb-0 text-sm">Address</h6>
             </label>
             <input class="form-control" type="text" formControlName="address"
-                   placeholder="Enter address" value="{{user.address}}">
+                   placeholder="Enter address" [ngModel]="user.address">
             <span class="text-danger"
                   *ngIf="(signupFormControl.address.touched) && signupFormControl.address.errors?.required">
                                 Address is required
@@ -271,7 +271,7 @@
               <h6 class="mb-0 text-sm">Education</h6>
             </label>
             <input class="form-control" type="text" formControlName="education"
-                   placeholder="Enter education" value="{{user.education}}">
+                   placeholder="Enter education" [ngModel]="user.education">
             <span class="text-danger"
                   *ngIf="(signupFormControl.education.touched) && signupFormControl.education.errors?.required">
                                 Education is required
@@ -292,7 +292,7 @@
               <h6 class="mb-0 text-sm">School</h6>
             </label>
             <input class="form-control" type="text" formControlName="school"
-                   placeholder="Enter school" value="{{user.school}}">
+                   placeholder="Enter school" [ngModel]="user.school">
             <span class="text-danger"
                   *ngIf="(signupFormControl.school.touched) && signupFormControl.school.errors?.required">
                                 School is required
@@ -313,7 +313,7 @@
               <h6 class="mb-0 text-sm">Facultys</h6>
             </label>
             <input class="form-control" type="text" formControlName="faculty"
-                   placeholder="Enter faculty" value="{{user.faculty}}">
+                   placeholder="Enter faculty" [ngModel]="user.faculty">
             <span class="text-danger"
                   *ngIf="(signupFormControl.faculty.touched) && signupFormControl.faculty.errors?.required">
                                 Faculty is required
@@ -334,7 +334,7 @@
               <h6 class="mb-0 text-sm">Course</h6>
             </label>
             <input class="form-control" type="text" formControlName="course"
-                   placeholder="Enter course" value="{{user.course}}">
+                   placeholder="Enter course" [ngModel]="user.course">
             <span class="text-danger"
                   *ngIf="(signupFormControl.course.touched) && signupFormControl.course.errors?.required">
                                 Course is required
@@ -355,9 +355,9 @@
                     [disabled]="!signupForm.valid"
                     class="btn btn-primary">Update
             </button>
-<!--            <button type="button"-->
-<!--                    class="btn btn-success" routerLink="/list">Back to list-->
-<!--            </button>-->
+            <button type="button"
+                    class="btn btn-success" routerLink="/list">Back to list
+            </button>
           </div>
 
           <span class="text-danger errorMsg" *ngIf="errorMessage">

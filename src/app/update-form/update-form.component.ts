@@ -5,7 +5,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CustomValidationService} from '../services/validation/custom-validation.service';
 import {UserListComponent} from '../user-list/user-list.component';
 import {AppComponent} from '../app.component';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-update-form',
@@ -24,6 +24,7 @@ export class UpdateFormComponent implements OnInit {
   // convert from string to int for gender
   y: number;
   newDate: Date;
+  val: any;
 
   private userList: UserListComponent;
 
@@ -32,28 +33,35 @@ export class UpdateFormComponent implements OnInit {
               private router: Router,
               private oauthService: OauthLoginService,
               private customValidator: CustomValidationService,
-              private appCom: AppComponent) {
+              private appCom: AppComponent,
+              public route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => {
-      return false;
-    };
+    //get param ID
+    let sub = this.route.params.subscribe(params => {
+      this.val = params['id'];
+    });
 
-    this.oauthService.searchById(this.appCom.searchInput).subscribe(data => {
+    console.log("IDDD: " + this.val);
+    this.oauthService.searchById(this.val).subscribe(data => {
       this.user = data;
     });
+
+    // this.router.routeReuseStrategy.shouldReuseRoute = () => {
+    //   return false;
+    // };
 
     this.newDate = new Date();
 
     // update form builder
     this.signupForm = this.fb.group({
-        firstname: [null, [Validators.required, Validators.maxLength(20), Validators.minLength(1)]],
+        firstname: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(1)]],
         middlename: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(1)]],
         lastname: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(1)]],
         userName: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(4)]],
-        password: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
-        confirmPassword: ['', [Validators.required]],
+        // password: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
+        // confirmPassword: ['', [Validators.required]],
         // role: ['', [Validators.required]],
         dob: ['', [Validators.required]],
         // gender: ['', [Validators.required]],
@@ -150,7 +158,7 @@ export class UpdateFormComponent implements OnInit {
     this.selectedRole = event.target.value;
   }
 
-  displayRole(){
+  displayRole() {
 
   }
 

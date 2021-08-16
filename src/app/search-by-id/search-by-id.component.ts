@@ -3,6 +3,7 @@ import {User} from '../services/data/profile-data.service';
 import {OauthLoginService} from '../services/oauth-login.service';
 import {Router} from '@angular/router';
 import {AppComponent} from '../app.component';
+import {ControlEmployeeComponent} from "../control-employee/control-employee.component";
 
 @Component({
   selector: 'app-search-by-id',
@@ -11,6 +12,7 @@ import {AppComponent} from '../app.component';
 })
 export class SearchByIdComponent implements OnInit {
   user: User;
+  private controll: ControlEmployeeComponent;
 
   constructor(private oauthService: OauthLoginService, private router: Router,
               private appCom: AppComponent) {
@@ -20,7 +22,7 @@ export class SearchByIdComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     };
-    this.oauthService.searchById(this.appCom.searchInput).subscribe(data => {
+    this.oauthService.searchById(this.controll.searchInput).subscribe(data => {
       this.user = data;
     });
     // window.location.reload();
