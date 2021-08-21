@@ -28,6 +28,18 @@ export class User {
               public status: number) {}
 }
 
+export type ReqLogin = {
+  userName: string,
+  password: string,
+}
+export type RespLogin = {
+  userName: string
+  token: string
+  roles: string
+  id: string
+}
+
+
 @Injectable({
   providedIn: 'root'
 })

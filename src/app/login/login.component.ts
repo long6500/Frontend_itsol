@@ -54,13 +54,14 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     let user = this.loginForm.value;
-    this.oauthService.basicJwtAuthLogin(user).subscribe(
+    this.oauthService.login(user).subscribe(
       response => {
         console.log(response);
         this.notifyService.showToast('logged in successfully!', 'success');
         this.invalidLogin = false;
         this.saveCredentials();
-        this.router.navigate(['home']);
+        //lúc đầu là home
+        this.router.navigate(['list']);
       },
       error => {
         this.invalidLogin = true;
@@ -91,7 +92,7 @@ export class LoginComponent implements OnInit {
     this.display = 'block';
   }
 
-  openForgotPassModal() {
+  forgotPass() {
     this.setVerifyModalData('Reset Password', 'Send OTP', 'reset');
     this.display = 'block';
   }

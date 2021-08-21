@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {Constants} from '../constants';
+import {Constants, httpOption} from '../constants';
 import {Observable} from 'rxjs';
-import {ProfileDataService, User} from 'src/app/services/data/profile-data.service';
+import {ReqLogin, RespLogin, User} from 'src/app/services/data/profile-data.service';
 
 export const TOKEN = 'token';
 
@@ -16,7 +16,7 @@ export class OauthLoginService {
   }
 
   basicJwtAuthLogin(user) {
-    return this.http.post<any>(Constants.API_BASE_URL + '/api/auth/signin', user).pipe(
+    return this.http.post<any>(Constants.API_BASE_URL + '/auth/signin', user).pipe(
       map(
         data => {
           localStorage.setItem(TOKEN, `Bearer ${data.accessToken}`);
@@ -26,8 +26,17 @@ export class OauthLoginService {
     );
   }
 
+  login(account: ReqLogin): Observable<RespLogin> {
+    return this.http.post<RespLogin>(
+      Constants.API_BASE_URL + '/auth/signin',
+      {
+        username: account.userName,
+        password: account.password,
+      }, httpOption);
+  }
+
   userSignup(user) {
-    return this.http.post<any>(Constants.API_BASE_URL + '/api/auth/signup', user);
+    return this.http.post<any>(Constants.API_BASE_URL + '/auth/signup', user);
   }
 
   userRegister(user) {
