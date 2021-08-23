@@ -38,12 +38,12 @@ export class UpdateFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    //get param ID
-    let sub = this.route.params.subscribe(params => {
-      this.val = params['id'];
+    // get param ID
+    const sub = this.route.params.subscribe(params => {
+      this.val = params.id;
     });
 
-    console.log("IDDD: " + this.val);
+    console.log('IDDD: ' + this.val);
     this.oauthService.searchById(this.val).subscribe(data => {
       this.user = data;
     });

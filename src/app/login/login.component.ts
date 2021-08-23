@@ -14,9 +14,9 @@ import {Constants} from '../constants';
 export class LoginComponent implements OnInit {
 
   errorMessage: string;
-  invalidLogin: boolean = false;
+  invalidLogin = false;
   loginForm: FormGroup;
-  rememberMe: boolean = false;
+  rememberMe = false;
   display = 'none';
   verifyModalData = {};
 
@@ -53,14 +53,14 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    let user = this.loginForm.value;
-    this.oauthService.login(user).subscribe(
-      response => {
-        console.log(response);
-        this.notifyService.showToast('logged in successfully!', 'success');
-        this.invalidLogin = false;
-        this.saveCredentials();
-        //lúc đầu là home
+    const user = this.loginForm.value;
+    this.oauthService.basicJwtAuthLogin(user).subscribe(
+      data => {
+        // console.log(response);
+        // this.notifyService.showToast('logged in successfully!', 'success');
+        // this.invalidLogin = false;
+        // this.saveCredentials();
+        // this.router.navigate(['list']);
         this.router.navigate(['list']);
       },
       error => {
@@ -103,9 +103,9 @@ export class LoginComponent implements OnInit {
 
   setVerifyModalData(title: string = '', btn: string = '', type: string = '') {
     this.verifyModalData = {
-      title: title,
-      btn: btn,
-      type: type
+      title,
+      btn,
+      type
     };
   }
 }

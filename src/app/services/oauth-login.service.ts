@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Constants, httpOption} from '../constants';
 import {Observable} from 'rxjs';
-import {ReqLogin, RespLogin, User} from 'src/app/services/data/profile-data.service';
+import {User} from 'src/app/services/data/profile-data.service';
 
 export const TOKEN = 'token';
 
@@ -26,14 +26,14 @@ export class OauthLoginService {
     );
   }
 
-  login(account: ReqLogin): Observable<RespLogin> {
-    return this.http.post<RespLogin>(
-      Constants.API_BASE_URL + '/auth/signin',
-      {
-        username: account.userName,
-        password: account.password,
-      }, httpOption);
-  }
+  // login(account: ReqLogin): Observable<RespLogin> {
+  //   return this.http.post<RespLogin>(
+  //     Constants.API_BASE_URL + '/auth/signin',
+  //     {
+  //       username: account.userName,
+  //       password: account.password,
+  //     }, httpOption);
+  // }
 
   userSignup(user) {
     return this.http.post<any>(Constants.API_BASE_URL + '/auth/signup', user);

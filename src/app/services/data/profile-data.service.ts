@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from 'src/app/constants';
-
 export class User {
   constructor(public id: number,
               public firstname: string,
@@ -28,16 +27,6 @@ export class User {
               public status: number) {}
 }
 
-export type ReqLogin = {
-  userName: string,
-  password: string,
-}
-export type RespLogin = {
-  userName: string
-  token: string
-  roles: string
-  id: string
-}
 
 
 @Injectable({

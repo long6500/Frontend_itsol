@@ -30,9 +30,8 @@ import {SearchByAddressComponent} from './search-by-address/search-by-address.co
 import {SearchByIdComponent} from './search-by-id/search-by-id.component';
 import {UpdateFormComponent} from './update-form/update-form.component';
 import {DatePipe} from '@angular/common';
-import { ControlEmployeeComponent } from './control-employee/control-employee.component';
-import {Ng2OrderModule} from "ng2-order-pipe";
-import {NgxPaginationModule} from "ngx-pagination";
+import {Ng2OrderModule} from 'ng2-order-pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { JwPaginationComponent } from 'jw-angular-pagination';
 
 @NgModule({
@@ -53,7 +52,6 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     SearchByAddressComponent,
     SearchByIdComponent,
     UpdateFormComponent,
-    ControlEmployeeComponent,
     JwPaginationComponent
   ],
   imports: [
