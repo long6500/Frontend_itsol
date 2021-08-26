@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Constants, httpOption} from '../constants';
 import {Observable} from 'rxjs';
@@ -16,15 +16,35 @@ export class OauthLoginService {
   }
 
   basicJwtAuthLogin(user) {
-    return this.http.post<any>(Constants.API_BASE_URL + '/auth/signin', user).pipe(
-      map(
-        data => {
+    return this.http.post<any>(Constants.API_BASE_URL + '/auth/signin', user)
+      .pipe(map(data => {
           localStorage.setItem(TOKEN, `Bearer ${data.accessToken}`);
           return data;
         }
-      )
-    );
+        )
+      );
   }
+
+  public login(user: User): Observable<any> {
+    const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(user.userName + ':' + user.password)});
+    return this.http.get(Constants.API_BASE_URL + '/auth/signin', {headers, responseType: 'text' as 'json'});
+  }
+
+  // login(user: User): Observable<any> {
+  //   return this.http.post<User>(Constants.API_BASE_URL + '/auth/signin', user)
+  //     .pipe(map(users => {
+  //         // user.authdata = window.btoa(username + ':' + password);
+  //         localStorage.setItem('user', JSON.stringify(users));
+  //         // this.userLogin.next(user);
+  //         return users;
+  //       })
+  //     );
+  // }
+
+  // khong su dung security
+  // login(user: User): Observable<any> {
+  //   return this.http.post<User>(Constants.API_BASE_URL + '/auth/signin', user);
+  // }
 
   // login(account: ReqLogin): Observable<RespLogin> {
   //   return this.http.post<RespLogin>(

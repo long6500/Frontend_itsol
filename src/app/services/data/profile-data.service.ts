@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Constants } from 'src/app/constants';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Constants} from 'src/app/constants';
+
 export class User {
   constructor(public id: number,
               public firstname: string,
@@ -10,7 +11,6 @@ export class User {
               public password: string,
               // public imageUrl: string,
               // public emailVerified: boolean
-
               public role: number,
               public dob: Date,
               public gender: number,
@@ -24,9 +24,9 @@ export class User {
               public faculty: string,
               public course: string,
               public timejoin: Date,
-              public status: number) {}
+              public status: number) {
+  }
 }
-
 
 
 @Injectable({
@@ -34,7 +34,8 @@ export class User {
 })
 export class ProfileDataService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getUserInfo() {
     return this.http.get<User>(Constants.API_BASE_URL + 'api/auth/user/me');

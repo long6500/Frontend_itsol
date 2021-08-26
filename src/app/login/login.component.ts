@@ -5,6 +5,7 @@ import {OauthLoginService} from '../services/oauth-login.service';
 import {isObject} from 'util';
 import {NotificationService} from '../services/notification.service';
 import {Constants} from '../constants';
+import {AuthenticationService} from '../services/auth/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
               private fb: FormBuilder,
               private oauthService: OauthLoginService,
-              private notifyService: NotificationService) {
+              private notifyService: NotificationService,
+              private loginservice: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -54,13 +56,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     const user = this.loginForm.value;
-    this.oauthService.basicJwtAuthLogin(user).subscribe(
+    this.oauthService.login(user).subscribe(
       data => {
         // console.log(response);
         // this.notifyService.showToast('logged in successfully!', 'success');
         // this.invalidLogin = false;
         // this.saveCredentials();
-        // this.router.navigate(['list']);
         this.router.navigate(['list']);
       },
       error => {
@@ -72,6 +73,14 @@ export class LoginComponent implements OnInit {
         }
       }
     );
+
+    // if (this.loginservice.authenticate(this.loginForm.value.userName, this.loginForm.value.password)
+    // ) {
+    //   this.router.navigate(['list']);
+    //   this.invalidLogin = false;
+    // } else {
+    //   this.invalidLogin = true;
+    // }
   }
 
   toggleValue(event) {

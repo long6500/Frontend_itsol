@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators, FormGroup} from '@angular/forms';
 import {OauthLoginService} from '../services/oauth-login.service';
 import {CustomValidationService} from '../services/validation/custom-validation.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
       return false;
     };
 
-    //make drop-down list select null
+    // make drop-down list select null
 
     // sign up form builder
     this.signupForm = this.fb.group({
