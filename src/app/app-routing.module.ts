@@ -18,7 +18,7 @@ import {UpdateFormComponent} from './update-form/update-form.component';
 export const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
 const routes: Routes = [
-  {path: '', redirectTo: 'list', pathMatch: 'full'},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'list', component: UserListComponent},

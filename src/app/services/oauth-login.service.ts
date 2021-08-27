@@ -25,10 +25,10 @@ export class OauthLoginService {
       );
   }
 
-  public login(user: User): Observable<any> {
-    const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(user.userName + ':' + user.password)});
-    return this.http.get(Constants.API_BASE_URL + '/auth/signin', {headers, responseType: 'text' as 'json'});
-  }
+  // public login(user: User): Observable<any> {
+  //   const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(user.userName + ':' + user.password)});
+  //   return this.http.get(Constants.API_BASE_URL + '/auth/signin', {headers, responseType: 'text' as 'json'});
+  // }
 
   // login(user: User): Observable<any> {
   //   return this.http.post<User>(Constants.API_BASE_URL + '/auth/signin', user)
@@ -46,14 +46,14 @@ export class OauthLoginService {
   //   return this.http.post<User>(Constants.API_BASE_URL + '/auth/signin', user);
   // }
 
-  // login(account: ReqLogin): Observable<RespLogin> {
-  //   return this.http.post<RespLogin>(
-  //     Constants.API_BASE_URL + '/auth/signin',
-  //     {
-  //       username: account.userName,
-  //       password: account.password,
-  //     }, httpOption);
-  // }
+  login(account: User): Observable<User> {
+    return this.http.post<User>(
+      Constants.API_BASE_URL + '/auth/signin',
+      {
+        username: account.userName,
+        password: account.password,
+      }, httpOption);
+  }
 
   userSignup(user) {
     return this.http.post<any>(Constants.API_BASE_URL + '/auth/signup', user);
