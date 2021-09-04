@@ -28,6 +28,12 @@ export class User {
   }
 }
 
+export class ReqLogin {
+  constructor(public userName: string,
+              public password: string) {
+  }
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -40,4 +46,12 @@ export class ProfileDataService {
   getUserInfo() {
     return this.http.get<User>(Constants.API_BASE_URL + 'api/auth/user/me');
   }
+}
+
+
+export interface RespLogin {
+  userName: string;
+  accessToken: string;
+  roles: string;
+  id: string;
 }

@@ -3,7 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Constants, httpOption} from '../constants';
 import {Observable} from 'rxjs';
-import {User} from 'src/app/services/data/profile-data.service';
+import {User, ReqLogin, RespLogin} from 'src/app/services/data/profile-data.service';
+
 
 export const TOKEN = 'token';
 
@@ -25,15 +26,17 @@ export class OauthLoginService {
       );
   }
 
-  // public login(user: User): Observable<any> {
-  //   const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(user.userName + ':' + user.password)});
-  //   return this.http.get(Constants.API_BASE_URL + '/auth/signin', {headers, responseType: 'text' as 'json'});
-  // }
+// 2
+//   public login(user: User): Observable<any> {
+//     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(user.userName + ':' + user.password)});
+//     return this.http.get(Constants.API_BASE_URL + '/auth/signin', {headers});
+//   }
 
+  // 1
   // login(user: User): Observable<any> {
   //   return this.http.post<User>(Constants.API_BASE_URL + '/auth/signin', user)
   //     .pipe(map(users => {
-  //         // user.authdata = window.btoa(username + ':' + password);
+  //         // user.authdata = window.btoa(user.userName + ':' + user.password);
   //         localStorage.setItem('user', JSON.stringify(users));
   //         // this.userLogin.next(user);
   //         return users;
@@ -46,13 +49,10 @@ export class OauthLoginService {
   //   return this.http.post<User>(Constants.API_BASE_URL + '/auth/signin', user);
   // }
 
-  login(account: User): Observable<User> {
-    return this.http.post<User>(
-      Constants.API_BASE_URL + '/auth/signin',
-      {
-        username: account.userName,
-        password: account.password,
-      }, httpOption);
+  // chinh
+  login(account: ReqLogin): Observable<RespLogin> {
+    return this.http.post<RespLogin>(
+      Constants.API_BASE_URL + '/auth/signin', account, httpOption);
   }
 
   userSignup(user) {
